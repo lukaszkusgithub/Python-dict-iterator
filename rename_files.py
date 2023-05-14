@@ -42,7 +42,7 @@ def iterate_files():
         frame_file_extension = os.path.splitext(file)[1]
         # TODO: implement search algorithm
         for label_file in os.listdir(labels):
-            label_file_path = os.path.join(frames, file)
+            label_file_path = os.path.join(labels, label_file)
             label_file_name = os.path.splitext(label_file)[0]
             label_file_extension = os.path.splitext(label_file)[1]
             if label_file_name == frame_file_name:
