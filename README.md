@@ -1,7 +1,7 @@
 # Python-dict-iterator
  A simple program to take every x files from a folder and copy them to a new folder
 
-## Usage
+## Usage to take every x files from a folder
 ```
 python main.py
 ```
@@ -15,7 +15,7 @@ or
 ```
 python main.py --destination folderName
 ```
-### changing the path from where the iterated files are located
+### Changing the path from where the iterated files are located
 ```
 python main.py -p folderName
 ```
@@ -41,4 +41,41 @@ destination  = "newFrames"
 ## Example of usage
 ```
 python main.py -p files -d newFiles -n 5
+```
+
+## Using a file renaming program
+```
+python rename_files.py
+```
+
+## Arguments
+### Changing the category
+```
+python rename_files.py -c categryIndex
+```
+or
+```
+python rename_files.py --category categryIndex
+```
+### Changing the index
+```
+python rename_files.py -i Integer
+```
+or
+```
+python rename_files.py --index Integer
+```
+## Default settings
+```
+category = 1
+index  = 1
+```
+## Example of usage
+```
+python rename_files.py -c 3 -i 1
+```
+
+## Using file filtering
+```
+python filter_frames.py
 ```
