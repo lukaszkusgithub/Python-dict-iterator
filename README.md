@@ -1,5 +1,5 @@
 # Python-dict-iterator
- A simple program to take every x files from a folder and copy them to a new folder
+ A simple program to take every x files from a folder and copy them to a new folder, filter folders and rename files.
 
 ## Usage to take every x files from a folder
 ```
