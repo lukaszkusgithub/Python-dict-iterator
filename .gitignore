@@ -1,6 +1,10 @@
 # Data from folders
 frames/*
 newFrames/*
+Frames/*
+Labels/*
+newFrames/*
+newLabels/*
 !.gitkeep
 .DS_Store
 

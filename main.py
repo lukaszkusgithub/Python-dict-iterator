@@ -6,9 +6,7 @@ warnings.simplefilter("ignore")
 
 _CURRENT_SYSTEM_NAME = os.name
 
-_LOCAL_PATH  = os.path.dirname(os.path.abspath('main.py'))
-
-
+_LOCAL_PATH = os.path.dirname(os.path.abspath('main.py'))
 
 # Parse command line arguments
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
@@ -28,6 +26,8 @@ args = vars(parser.parse_args())
 number = int(args["number"])
 directory = args["path"]
 new_diretory = os.path.join(_LOCAL_PATH, args["destination"])
+
+
 
 
 def iterate_files():

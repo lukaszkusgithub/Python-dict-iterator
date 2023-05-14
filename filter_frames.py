@@ -5,11 +5,12 @@ _CURRENT_SYSTEM_NAME = os.name
 _LOCAL_PATH = os.path.dirname(os.path.abspath('main.py'))
 
 if _CURRENT_SYSTEM_NAME == 'nt':
-    frames = os.path.join(_LOCAL_PATH, "frames\\")
-    labels = os.path.join(_LOCAL_PATH, "labels\\")
+    frames = os.path.join(_LOCAL_PATH, "Frames\\")
+    labels = os.path.join(_LOCAL_PATH, "Labels\\")
 elif _CURRENT_SYSTEM_NAME == 'posix':
-    frames = os.path.join(_LOCAL_PATH, "frames/")
-    labels = os.path.join(_LOCAL_PATH, "labels/")
+    frames = os.path.join(_LOCAL_PATH, "Frames/")
+    labels = os.path.join(_LOCAL_PATH, "Labels/")
+
 
 
 def iterate_files():
