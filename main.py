@@ -44,7 +44,6 @@ def create_new_directory():
         print("Directory '%s' can not be created" % _NEW_DIRECTORY)
 
 
-
 def main():
     create_new_directory()
     iterate_files()

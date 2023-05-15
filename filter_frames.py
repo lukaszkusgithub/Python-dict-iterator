@@ -21,7 +21,7 @@ def filter_files():
             label_file_name = os.path.splitext(label_file)[0]
             if label_file_name == file_name:
                 found = True
-                # break
+                break
         if not found:
             os.remove(file_path)
 
