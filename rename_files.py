@@ -13,11 +13,11 @@ _CLASS_ID = {'rock': 0, 'tree': 1, 'car_parts': 2, 'car_wheel': 3, 'snow': 4,
              'bird': 5}
 
 if _CURRENT_SYSTEM_NAME == 'nt':
-    frames = os.path.join(_LOCAL_PATH, "Frames\\")
-    labels = os.path.join(_LOCAL_PATH, "Labels\\")
+    _FRAMES_PATH = os.path.join(_LOCAL_PATH, "Frames\\")
+    _LABELS_PATH = os.path.join(_LOCAL_PATH, "Labels\\")
 elif _CURRENT_SYSTEM_NAME == 'posix':
-    frames = os.path.join(_LOCAL_PATH, "Frames/")
-    labels = os.path.join(_LOCAL_PATH, "Labels/")
+    _FRAMES_PATH = os.path.join(_LOCAL_PATH, "Frames/")
+    _LABELS_PATH = os.path.join(_LOCAL_PATH, "Labels/")
 
 # Parse command line arguments
 parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
@@ -27,28 +27,28 @@ parser.add_argument("-i", "--index", default="1",
                     help="Index")
 args = vars(parser.parse_args())
 
-category = int(args["category"])
-index_param = int(args["index"])
+_CATEGORY = int(args["category"])
+_INDEX_ARG = int(args["index"])
 
-destination_frames = os.path.join(_LOCAL_PATH, 'newFrames')
-destination_labels = os.path.join(_LOCAL_PATH, 'newLabels')
+_DESTINATION_FRAMES_PATH = os.path.join(_LOCAL_PATH, 'newFrames')
+_DESTINATION_LABELS_PATH = os.path.join(_LOCAL_PATH, 'newLabels')
 
 
 def iterate_files():
-    file_index = index_param
-    for file in os.listdir(frames):
-        frame_file_path = os.path.join(frames, file)
+    file_index = _INDEX_ARG
+    for file in os.listdir(_FRAMES_PATH):
+        frame_file_path = os.path.join(_FRAMES_PATH, file)
         frame_file_name = os.path.splitext(file)[0]
         frame_file_extension = os.path.splitext(file)[1]
         # TODO: implement search algorithm
-        for label_file in os.listdir(labels):
-            label_file_path = os.path.join(labels, label_file)
+        for label_file in os.listdir(_LABELS_PATH):
+            label_file_path = os.path.join(_LABELS_PATH, label_file)
             label_file_name = os.path.splitext(label_file)[0]
             label_file_extension = os.path.splitext(label_file)[1]
             if label_file_name == frame_file_name:
                 try:
                     category_name = list(_CLASS_ID.keys())[
-                        list(_CLASS_ID.values()).index(category)]
+                        list(_CLASS_ID.values()).index(_CATEGORY)]
                 except:
                     print("Wrong category")
 
@@ -57,9 +57,9 @@ def iterate_files():
                 label_new_name = '{}_{}{}'.format(file_index, category_name,
                                                   label_file_extension)
 
-                label_new_path = os.path.join(destination_labels,
+                label_new_path = os.path.join(_DESTINATION_LABELS_PATH,
                                               label_new_name)
-                frame_new_path = os.path.join(destination_frames,
+                frame_new_path = os.path.join(_DESTINATION_FRAMES_PATH,
                                               frame_new_name)
 
                 shutil.copy(frame_file_path, frame_new_path)
@@ -70,8 +70,8 @@ def iterate_files():
 
 def create_new_directory():
     try:
-        os.makedirs(destination_frames, exist_ok=True)
-        os.makedirs(destination_labels, exist_ok=True)
+        os.makedirs(_DESTINATION_FRAMES_PATH, exist_ok=True)
+        os.makedirs(_DESTINATION_LABELS_PATH, exist_ok=True)
         print("Directory created successfully")
     except OSError as error:
         print("Directory can not be created")

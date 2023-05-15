@@ -23,27 +23,25 @@ elif _CURRENT_SYSTEM_NAME == 'posix':
 args = vars(parser.parse_args())
 
 # Set up parameters
-number = int(args["number"])
-directory = args["path"]
-new_diretory = os.path.join(_LOCAL_PATH, args["destination"])
-
-
+_NUMBER = int(args["number"])
+_DIRECTORY = args["path"]
+_NEW_DIRECTORY = os.path.join(_LOCAL_PATH, args["destination"])
 
 
 def iterate_files():
-    for index, filename in enumerate(os.listdir(directory)):
-        file = os.path.join(directory, filename)
-        if index % number == 0:
+    for index, filename in enumerate(os.listdir(_DIRECTORY)):
+        file = os.path.join(_DIRECTORY, filename)
+        if index % _NUMBER == 0:
             if os.path.isfile(file):
-                shutil.copy(file, new_diretory)
+                shutil.copy(file, _NEW_DIRECTORY)
 
 
 def create_new_directory():
     try:
-        os.makedirs(new_diretory, exist_ok=True)
-        print("Directory '%s' created successfully" % new_diretory)
+        os.makedirs(_NEW_DIRECTORY, exist_ok=True)
+        print("Directory '%s' created successfully" % _NEW_DIRECTORY)
     except OSError as error:
-        print("Directory '%s' can not be created" % new_diretory)
+        print("Directory '%s' can not be created" % _NEW_DIRECTORY)
 
 
 
