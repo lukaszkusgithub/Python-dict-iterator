@@ -5,6 +5,7 @@ Frames/*
 Labels/*
 newFrames/*
 newLabels/*
+freeFrames/*
 !.gitkeep
 .DS_Store
 

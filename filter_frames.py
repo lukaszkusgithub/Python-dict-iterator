@@ -1,4 +1,5 @@
 import os
+import shutil
 
 _CURRENT_SYSTEM_NAME = os.name
 
@@ -7,9 +8,11 @@ _LOCAL_PATH = os.path.dirname(os.path.abspath('main.py'))
 if _CURRENT_SYSTEM_NAME == 'nt':
     _FRAMES_PATH = os.path.join(_LOCAL_PATH, "Frames\\")
     _LABELS_PATH = os.path.join(_LOCAL_PATH, "Labels\\")
+    _SAVE_FRAMES_PATH = os.path.join(_LOCAL_PATH, "freeFrames\\")
 elif _CURRENT_SYSTEM_NAME == 'posix':
     _FRAMES_PATH = os.path.join(_LOCAL_PATH, "Frames/")
     _LABELS_PATH = os.path.join(_LOCAL_PATH, "Labels/")
+    _SAVE_FRAMES_PATH = os.path.join(_LOCAL_PATH, "freeFrames/")
 
 
 def filter_files():
@@ -23,7 +26,8 @@ def filter_files():
                 found = True
                 break
         if not found:
-            os.remove(file_path)
+            shutil.move(file_path, os.path.join(_SAVE_FRAMES_PATH, file))
+
 
 
 def main():
